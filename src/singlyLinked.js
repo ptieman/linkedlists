@@ -57,6 +57,47 @@ class singlyLinkedList {
             } else {
                 prev.next = newNode;
             }
+        };
+    };
+    
+    // delete a node with given data from list
+    deleteNode(data) {
+        if (!this.head) {
+            return;
+        }
+        if (this.head.data === data) {
+            this.head = this.head.next;
+        }
+        let current = this.head;
+        let prev = null;
+        while (current && current.data !== data) {
+            prev = current;
+            current = current.next;
+        }
+        if (current && current.data === data) {
+            prev.next = current.next;
+        }
+    }
+
+    // search for node with  given data
+    
+    findNode(data) {
+        let current = this.head;
+        while (current) {
+            if (current.data === data){
+                return true;
+            }
+            current = current.next;
+        }
+        return false;
+    }
+
+    // print values of all nodes 
+    printValues() {
+        let current = this.head
+        while (current) {
+            console.log(current.data);
+            current = current.next;
         }
     }
 }
